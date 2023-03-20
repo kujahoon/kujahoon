@@ -1,0 +1,11 @@
+[자훈] [오후 11:57] /*05*/void IOUpdate(enum actSts* pArr, int len)
+{
+   short port = 0;
+   long inBuf, bitMask = 1;
+
+   get_option_io(port, &inBuf);
+   inBuf = ~inBuf;
+
+   for (int bitNo = 0; bitNo < len; bitNo++)
+      pArr[bitNo] = (inBuf & (bitMask << bitNo)) != 0 ? ON : OFF;
+}
